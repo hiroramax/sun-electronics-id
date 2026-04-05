@@ -295,10 +295,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
   display: flex; align-items: center; gap: 16px;
   padding: 16px 20px; border: 1.5px solid var(--gray-lighter);
   border-radius: var(--radius); cursor: pointer; transition: var(--transition);
-  background: var(--white);
+  background: var(--white); min-height: 56px; overflow: visible;
 }
 .analyzer-option:hover { border-color: var(--emerald); background: rgba(30,93,50,0.03); }
-.analyzer-option.selected { border-color: var(--gold); background: rgba(201,152,46,0.06); }
+.analyzer-option.selected { border-color: var(--emerald); background: rgba(30,93,50,0.06); }
+.analyzer-option.selected .analyzer-option-text { color: var(--dark); }
 .analyzer-option-radio {
   width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--gray-light);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
@@ -310,8 +311,8 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 .analyzer-option.selected .analyzer-option-radio::after {
   content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
 }
-.analyzer-option-text { font-size: 0.95rem; font-weight: 500; }
-.analyzer-option-desc { font-size: 0.78rem; color: var(--gray); margin-top: 2px; }
+.analyzer-option-text { font-size: 0.95rem; font-weight: 500; color: var(--dark); word-wrap: break-word; }
+.analyzer-option-desc { font-size: 0.78rem; color: var(--gray); margin-top: 2px; word-wrap: break-word; }
 
 .analyzer-nav {
   display: flex; justify-content: space-between; margin-top: 36px; gap: 16px;
@@ -396,7 +397,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 }
 .footer-grid {
   max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
   margin-bottom: 48px;
 }
 .footer-about p { font-size: 0.85rem; opacity: 0.6; margin-top: 16px; line-height: 1.7; }
@@ -497,7 +498,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
     <a href="#home" data-id="nav-home" data-en="Home" data-id-lang="Beranda">Home</a>
     <a href="#about" data-en="About" data-id-lang="Tentang">About</a>
     <a href="#products" data-en="Products" data-id-lang="Produk">Products</a>
-    <a href="#services" data-en="Services" data-id-lang="Layanan">Services</a>
     <a href="#analyzer" data-en="Energy Analyzer" data-id-lang="Analisa Energi">Energy Analyzer</a>
     <a href="#contact" data-en="Contact" data-id-lang="Kontak">Contact</a>
     <button class="lang-toggle" onclick="toggleLang()">EN / ID</button>
@@ -513,7 +513,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
   <a href="#home" onclick="toggleMobile()">Home</a>
   <a href="#about" onclick="toggleMobile()">About</a>
   <a href="#products" onclick="toggleMobile()">Products</a>
-  <a href="#services" onclick="toggleMobile()">Services</a>
   <a href="#analyzer" onclick="toggleMobile()">Energy Analyzer</a>
   <a href="#contact" onclick="toggleMobile()">Contact</a>
   <button class="lang-toggle" onclick="toggleLang(); toggleMobile();">EN / ID</button>
@@ -537,10 +536,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 <!-- ABOUT -->
 <section class="section section-cream" id="about">
   <div class="container">
-    <div class="about-grid">
-      <div class="about-image reveal">
-        <div class="about-image-placeholder">Company Photo<br>Placeholder</div>
-      </div>
+    <div class="about-grid" style="grid-template-columns: 1fr;">
       <div class="about-content reveal">
         <div class="section-label" data-en="About Us" data-id-lang="Tentang Kami">About Us</div>
         <h2 data-en="Powering a Brighter Indonesia" data-id-lang="Mewujudkan Indonesia yang Lebih Terang">Powering a Brighter Indonesia</h2>
@@ -577,37 +573,9 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
       <div class="product-card reveal">
         <div class="product-img">Product Photo</div>
         <div class="product-info">
-          <h3 data-en="Solar Water Pump" data-id-lang="Pompa Air Tenaga Surya">Solar Water Pump</h3>
-          <p data-en="Solar-powered water pumps ideal for agriculture and remote communities without grid access." data-id-lang="Pompa air tenaga surya ideal untuk pertanian dan komunitas terpencil tanpa akses jaringan listrik.">Solar-powered water pumps ideal for agriculture and remote communities without grid access.</p>
+          <h3 data-en="Micro Hydro Power" data-id-lang="Pembangkit Listrik Mikrohidro">Micro Hydro Power</h3>
+          <p data-en="Micro hydro power systems that harness river and water flow to generate clean electricity for remote communities." data-id-lang="Sistem pembangkit listrik mikrohidro yang memanfaatkan aliran sungai dan air untuk menghasilkan listrik bersih bagi komunitas terpencil.">Micro hydro power systems that harness river and water flow to generate clean electricity for remote communities.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="section section-cream" id="services">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label" data-en="Our Services" data-id-lang="Layanan Kami">Our Services</div>
-      <h2 data-en="End-to-End Energy Solutions" data-id-lang="Solusi Energi Menyeluruh">End-to-End Energy Solutions</h2>
-      <p data-en="From planning to monitoring, we handle every aspect of your renewable energy journey." data-id-lang="Dari perencanaan hingga monitoring, kami menangani setiap aspek perjalanan energi terbarukan Anda.">From planning to monitoring, we handle every aspect of your renewable energy journey.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon">☀️</div>
-        <h3 data-en="Solar Installation" data-id-lang="Instalasi Panel Surya">Solar Installation</h3>
-        <p data-en="Professional installation of solar panel systems for homes, businesses, and industrial facilities." data-id-lang="Instalasi profesional sistem panel surya untuk rumah, bisnis, dan fasilitas industri.">Professional installation of solar panel systems for homes, businesses, and industrial facilities.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">🔧</div>
-        <h3 data-en="Maintenance" data-id-lang="Pemeliharaan">Maintenance</h3>
-        <p data-en="Regular maintenance and repair services to ensure your energy systems run at peak performance." data-id-lang="Layanan pemeliharaan dan perbaikan rutin untuk memastikan sistem energi Anda berjalan optimal.">Regular maintenance and repair services to ensure your energy systems run at peak performance.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">📊</div>
-        <h3 data-en="Monitoring & Analytics" data-id-lang="Monitoring & Analitik">Monitoring & Analytics</h3>
-        <p data-en="24/7 real-time monitoring and performance analytics for your renewable energy installations." data-id-lang="Monitoring real-time 24/7 dan analitik performa untuk instalasi energi terbarukan Anda.">24/7 real-time monitoring and performance analytics for your renewable energy installations.</p>
       </div>
     </div>
   </div>
@@ -631,51 +599,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section section-dark" id="testimonials">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label" data-en="Testimonials" data-id-lang="Testimoni">Testimonials</div>
-      <h2 data-en="What Our Clients Say" data-id-lang="Kata Klien Kami">What Our Clients Say</h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote" data-en="\"SUN Electronics transformed our village. We now have reliable electricity for the first time in decades. Truly life-changing.\"" data-id-lang="\"SUN Electronics mengubah desa kami. Kami sekarang memiliki listrik yang andal untuk pertama kalinya dalam puluhan tahun. Benar-benar mengubah hidup.\"">"SUN Electronics transformed our village. We now have reliable electricity for the first time in decades. Truly life-changing."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">A</div>
-          <div>
-            <div class="testimonial-name">Ahmad Suharto</div>
-            <div class="testimonial-role" data-en="Village Chief, East Nusa Tenggara" data-id-lang="Kepala Desa, NTT">Village Chief, East Nusa Tenggara</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote" data-en="\"Professional installation and excellent after-service. Our factory's energy costs have dropped significantly since switching to solar.\"" data-id-lang="\"Instalasi profesional dan layanan purna jual yang sangat baik. Biaya energi pabrik kami turun drastis sejak beralih ke tenaga surya.\"">"Professional installation and excellent after-service. Our factory's energy costs have dropped significantly since switching to solar."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">R</div>
-          <div>
-            <div class="testimonial-name">Rina Wijaya</div>
-            <div class="testimonial-role" data-en="Factory Director, Surabaya" data-id-lang="Direktur Pabrik, Surabaya">Factory Director, Surabaya</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote" data-en="\"The monitoring system gives us real-time insights into our energy production. SUN Electronics delivers on their promises.\"" data-id-lang="\"Sistem monitoring memberikan insight real-time tentang produksi energi kami. SUN Electronics menepati janji mereka.\"">"The monitoring system gives us real-time insights into our energy production. SUN Electronics delivers on their promises."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">B</div>
-          <div>
-            <div class="testimonial-name">Budi Prasetyo</div>
-            <div class="testimonial-role" data-en="Government Official, Papua" data-id-lang="Pejabat Pemerintah, Papua">Government Official, Papua</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section class="section section-cream" id="contact">
   <div class="container">
@@ -690,29 +613,22 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
         <div class="contact-item">
           <div class="contact-icon">📍</div>
           <div class="contact-detail">
-            <h4 data-en="Address" data-id-lang="Alamat">Address</h4>
-            <p>Jl. Contoh No. 123, Jakarta, Indonesia</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div class="contact-detail">
-            <h4 data-en="Phone" data-id-lang="Telepon">Phone</h4>
-            <p>+62 21 1234 5678</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">✉️</div>
-          <div class="contact-detail">
-            <h4>Email</h4>
-            <p>info@sunelectronics.web.id</p>
+            <h4 data-en="Address" data-id-lang="Alamat">Alamat</h4>
+            <p>Meruyung, Limo, Depok, Jawa Barat 16515</p>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">💬</div>
           <div class="contact-detail">
             <h4>WhatsApp</h4>
-            <p>+62 812 3456 7890</p>
+            <p><a href="https://wa.me/6281237453230" style="color:var(--gray);text-decoration:none;">+62 812-3745-3230</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail">
+            <h4>Email</h4>
+            <p><a href="mailto:sunelectronicsindonesia@gmail.com" style="color:var(--gray);text-decoration:none;">sunelectronicsindonesia@gmail.com</a></p>
           </div>
         </div>
         <div class="map-placeholder" data-en="Google Maps Embed" data-id-lang="Google Maps Embed">Google Maps Embed</div>
@@ -752,23 +668,14 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
       <ul class="footer-links">
         <li><a href="#about" data-en="About Us" data-id-lang="Tentang Kami">About Us</a></li>
         <li><a href="#products" data-en="Products" data-id-lang="Produk">Products</a></li>
-        <li><a href="#services" data-en="Services" data-id-lang="Layanan">Services</a></li>
         <li><a href="#analyzer" data-en="Energy Analyzer" data-id-lang="Analisa Energi">Energy Analyzer</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 data-en="Services" data-id-lang="Layanan">Services</h4>
-      <ul class="footer-links">
-        <li><a href="#services" data-en="Installation" data-id-lang="Instalasi">Installation</a></li>
-        <li><a href="#services" data-en="Maintenance" data-id-lang="Pemeliharaan">Maintenance</a></li>
-        <li><a href="#services" data-en="Monitoring" data-id-lang="Monitoring">Monitoring</a></li>
       </ul>
     </div>
     <div>
       <h4 data-en="Contact" data-id-lang="Kontak">Contact</h4>
       <ul class="footer-links">
-        <li><a href="mailto:info@sunelectronics.web.id">info@sunelectronics.web.id</a></li>
-        <li><a href="tel:+622112345678">+62 21 1234 5678</a></li>
+        <li><a href="mailto:sunelectronicsindonesia@gmail.com">sunelectronicsindonesia@gmail.com</a></li>
+        <li><a href="https://wa.me/6281237453230">+62 812-3745-3230</a></li>
         <li><a href="#contact" data-en="Send Message" data-id-lang="Kirim Pesan">Send Message</a></li>
       </ul>
     </div>
@@ -780,7 +687,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 </footer>
 
 <!-- WHATSAPP FAB -->
-<button class="wa-fab" onclick="window.open('https://wa.me/6281234567890','_blank')" title="Chat via WhatsApp">
+<button class="wa-fab" onclick="window.open('https://wa.me/6281237453230','_blank')" title="Chat via WhatsApp">
   💬
 </button>
 
@@ -854,25 +761,25 @@ const wizardData = {
     {
       label: 'Step 3 of 5',
       question: 'What is your estimated monthly power consumption?',
-      options: [] // Dynamic based on step 1
+      options: []
     },
     {
       label: 'Step 4 of 5',
-      question: 'What is your primary goal?',
+      question: 'What energy source is available at your location?',
       options: [
-        { text: 'Reduce electricity costs', desc: 'Save on monthly energy bills', value: 'save' },
-        { text: 'Energy independence', desc: 'Fully off-grid, self-sufficient', value: 'independent' },
-        { text: 'Backup power', desc: 'Reliable backup during PLN outages', value: 'backup' },
-        { text: 'Sustainability', desc: 'Eco-friendly and green energy', value: 'green' }
+        { text: 'Sunlight (open area/rooftop)', desc: 'Suitable for Solar Panel Systems', value: 'solar' },
+        { text: 'River or water flow', desc: 'Suitable for Micro Hydro Power', value: 'hydro' },
+        { text: 'Both available', desc: 'We will recommend the best combination', value: 'both' },
+        { text: 'Not sure', desc: 'Our team will help assess your location', value: 'unsure' }
       ]
     },
     {
       label: 'Step 5 of 5',
       question: 'Where is your project located?',
       options: [
-        { text: 'Java & Bali', desc: 'High solar potential', value: 'java' },
-        { text: 'Sumatra', desc: 'High solar potential', value: 'sumatra' },
-        { text: 'Kalimantan', desc: 'High solar potential', value: 'kalimantan' },
+        { text: 'Java & Bali', desc: 'High solar potential, dense population', value: 'java' },
+        { text: 'Sumatra', desc: 'High hydro potential, abundant rivers', value: 'sumatra' },
+        { text: 'Kalimantan', desc: 'High solar potential, remote areas', value: 'kalimantan' },
         { text: 'Eastern Indonesia', desc: 'Sulawesi, NTT, NTB, Maluku, Papua', value: 'east' }
       ]
     }
@@ -904,21 +811,21 @@ const wizardData = {
     },
     {
       label: 'Langkah 4 dari 5',
-      question: 'Apa tujuan utama Anda?',
+      question: 'Sumber energi apa yang tersedia di lokasi Anda?',
       options: [
-        { text: 'Hemat biaya listrik', desc: 'Mengurangi tagihan energi bulanan', value: 'save' },
-        { text: 'Mandiri energi', desc: 'Sepenuhnya off-grid, mandiri', value: 'independent' },
-        { text: 'Backup listrik', desc: 'Cadangan saat PLN padam', value: 'backup' },
-        { text: 'Ramah lingkungan', desc: 'Energi hijau dan berkelanjutan', value: 'green' }
+        { text: 'Sinar matahari (area terbuka/atap)', desc: 'Cocok untuk Sistem Panel Surya', value: 'solar' },
+        { text: 'Aliran sungai atau air', desc: 'Cocok untuk Pembangkit Mikrohidro', value: 'hydro' },
+        { text: 'Keduanya tersedia', desc: 'Kami akan rekomendasikan kombinasi terbaik', value: 'both' },
+        { text: 'Belum yakin', desc: 'Tim kami akan bantu menilai lokasi Anda', value: 'unsure' }
       ]
     },
     {
       label: 'Langkah 5 dari 5',
       question: 'Di mana lokasi proyek Anda?',
       options: [
-        { text: 'Jawa & Bali', desc: 'Potensi surya tinggi', value: 'java' },
-        { text: 'Sumatera', desc: 'Potensi surya tinggi', value: 'sumatra' },
-        { text: 'Kalimantan', desc: 'Potensi surya tinggi', value: 'kalimantan' },
+        { text: 'Jawa & Bali', desc: 'Potensi surya tinggi, padat penduduk', value: 'java' },
+        { text: 'Sumatera', desc: 'Potensi hidro tinggi, banyak sungai', value: 'sumatra' },
+        { text: 'Kalimantan', desc: 'Potensi surya tinggi, area terpencil', value: 'kalimantan' },
         { text: 'Indonesia Timur', desc: 'Sulawesi, NTT, NTB, Maluku, Papua', value: 'east' }
       ]
     }
@@ -1042,17 +949,33 @@ function showResult() {
   document.getElementById('progressBar').style.width = '100%';
   const isEn = currentLang === 'en';
 
-  // Determine system type
+  // Determine system type based on grid access (step 2)
   let systemType, systemDesc;
   if (answers[1] === 'off-grid') {
-    systemType = isEn ? 'Off-Grid Solar System' : 'Sistem Surya Off-Grid';
-    systemDesc = isEn ? 'A fully independent solar system with battery storage, perfect for areas without PLN access.' : 'Sistem surya mandiri dengan penyimpanan baterai, sempurna untuk daerah tanpa akses PLN.';
+    systemType = isEn ? 'Off-Grid System' : 'Sistem Off-Grid';
+    systemDesc = isEn ? 'A fully independent energy system with battery storage, perfect for areas without PLN access.' : 'Sistem energi mandiri dengan penyimpanan baterai, sempurna untuk daerah tanpa akses PLN.';
   } else if (answers[1] === 'hybrid') {
-    systemType = isEn ? 'Hybrid Solar System' : 'Sistem Surya Hybrid';
-    systemDesc = isEn ? 'Combines solar with PLN grid as backup, ideal for areas with unreliable electricity.' : 'Menggabungkan tenaga surya dengan jaringan PLN sebagai cadangan, ideal untuk daerah dengan listrik tidak stabil.';
+    systemType = isEn ? 'Hybrid System' : 'Sistem Hybrid';
+    systemDesc = isEn ? 'Combines renewable energy with PLN grid as backup, ideal for areas with unreliable electricity.' : 'Menggabungkan energi terbarukan dengan jaringan PLN sebagai cadangan, ideal untuk daerah dengan listrik tidak stabil.';
   } else {
-    systemType = isEn ? 'On-Grid Solar System' : 'Sistem Surya On-Grid';
+    systemType = isEn ? 'On-Grid System' : 'Sistem On-Grid';
     systemDesc = isEn ? 'Connected to PLN grid, reduces your electricity bill and can sell excess power back.' : 'Terhubung ke jaringan PLN, mengurangi tagihan listrik dan bisa menjual kelebihan daya.';
+  }
+
+  // Determine recommended products based on energy source (step 4)
+  let products, productsDesc;
+  if (answers[3] === 'solar') {
+    products = isEn ? 'Solar Panel System + Inverter & Battery' : 'Sistem Panel Surya + Inverter & Baterai';
+    productsDesc = isEn ? 'We recommend our high-efficiency solar panels paired with reliable inverter and battery storage for optimal performance.' : 'Kami merekomendasikan panel surya efisiensi tinggi kami dipadukan dengan inverter dan penyimpanan baterai yang andal untuk performa optimal.';
+  } else if (answers[3] === 'hydro') {
+    products = isEn ? 'Micro Hydro Power + Inverter & Battery' : 'Pembangkit Mikrohidro + Inverter & Baterai';
+    productsDesc = isEn ? 'Our micro hydro system harnesses your water flow for 24/7 clean electricity, supported by inverter and battery for stable output.' : 'Sistem mikrohidro kami memanfaatkan aliran air untuk listrik bersih 24/7, didukung inverter dan baterai untuk output stabil.';
+  } else if (answers[3] === 'both') {
+    products = isEn ? 'Solar Panel + Micro Hydro + Inverter & Battery' : 'Panel Surya + Mikrohidro + Inverter & Baterai';
+    productsDesc = isEn ? 'A hybrid renewable system combining solar and micro hydro for maximum reliability — solar by day, hydro by night.' : 'Sistem hybrid energi terbarukan yang menggabungkan surya dan mikrohidro untuk keandalan maksimum — surya di siang hari, hidro di malam hari.';
+  } else {
+    products = isEn ? 'To be assessed by our team' : 'Akan dinilai oleh tim kami';
+    productsDesc = isEn ? 'Our team will conduct a site assessment to determine the best renewable energy solution for your location.' : 'Tim kami akan melakukan penilaian lokasi untuk menentukan solusi energi terbarukan terbaik untuk lokasi Anda.';
   }
 
   // Capacity estimate
@@ -1070,36 +993,32 @@ function showResult() {
   };
   const savings = savingsMap[answers[2]] || '30 - 50%';
 
-  const sysLabel = isEn ? 'Recommended System' : 'Sistem Rekomendasi';
+  const sysLabel = isEn ? 'System Type' : 'Tipe Sistem';
+  const prodLabel = isEn ? 'Recommended Products' : 'Produk Rekomendasi';
   const capLabel = isEn ? 'Estimated Capacity' : 'Estimasi Kapasitas';
   const saveLabel = isEn ? 'Potential Savings' : 'Potensi Penghematan';
-  const goalLabel = isEn ? 'Your Goal' : 'Tujuan Anda';
-  const goalMap = {
-    en: { save: 'Cost Reduction', independent: 'Energy Independence', backup: 'Backup Power', green: 'Sustainability' },
-    id: { save: 'Penghematan Biaya', independent: 'Kemandirian Energi', backup: 'Cadangan Listrik', green: 'Ramah Lingkungan' }
-  };
-  const goalText = goalMap[currentLang][answers[3]] || '-';
   const ctaText = isEn ? 'Consult via WhatsApp 💬' : 'Konsultasi via WhatsApp 💬';
   const restartText = isEn ? '↻ Start Over' : '↻ Mulai Ulang';
   const resultTitle = isEn ? 'Your Energy Analysis Result' : 'Hasil Analisa Energi Anda';
 
   // Build WA message
-  const customerTypes = { residential: 'Residential', commercial: 'Commercial', industrial: 'Industrial', government: 'Government' };
-  const waMsg = encodeURIComponent(`Halo SUN Electronics, saya tertarik dengan solusi energi terbarukan.\n\nHasil Analisa:\n- Tipe: ${customerTypes[answers[0]]}\n- Sistem: ${systemType}\n- Kapasitas: ${capacity}\n- Tujuan: ${goalText}\n\nMohon info lebih lanjut. Terima kasih!`);
+  const customerTypes = { residential: 'Rumah Tangga', commercial: 'Bisnis/Komersial', industrial: 'Industri', government: 'Pemerintah/Institusi' };
+  const sourceTypes = { solar: 'Tenaga Surya', hydro: 'Mikrohidro', both: 'Surya + Mikrohidro', unsure: 'Belum ditentukan' };
+  const waMsg = encodeURIComponent(`Halo SUN Electronics, saya tertarik dengan solusi energi terbarukan.\n\nHasil Analisa:\n- Pelanggan: ${customerTypes[answers[0]]}\n- Sistem: ${systemType}\n- Produk: ${products}\n- Kapasitas: ${capacity}\n- Sumber energi: ${sourceTypes[answers[3]]}\n\nMohon info lebih lanjut. Terima kasih!`);
 
   document.getElementById('analyzerBody').innerHTML = `
     <div class="analyzer-step-label">${isEn ? 'Analysis Complete' : 'Analisa Selesai'} ✓</div>
     <h3>${resultTitle}</h3>
     <div class="result-cards-grid">
       <div class="result-card"><h4>${sysLabel}</h4><p>${systemType}</p></div>
+      <div class="result-card"><h4>${prodLabel}</h4><p>${products}</p></div>
       <div class="result-card"><h4>${capLabel}</h4><p>${capacity}</p></div>
       <div class="result-card"><h4>${saveLabel}</h4><p>${savings}</p></div>
-      <div class="result-card"><h4>${goalLabel}</h4><p>${goalText}</p></div>
     </div>
-    <p style="color:var(--gray); font-size:0.9rem; margin-bottom:24px;">${systemDesc}</p>
+    <p style="color:var(--gray); font-size:0.9rem; margin-bottom:24px;">${productsDesc}</p>
     <div class="analyzer-nav">
       <button class="btn btn-outline" style="color:var(--dark);border-color:var(--gray-light);" onclick="restartWizard()">${restartText}</button>
-      <a href="https://wa.me/6281234567890?text=${waMsg}" target="_blank" class="btn btn-gold">${ctaText}</a>
+      <a href="https://wa.me/6281237453230?text=${waMsg}" target="_blank" class="btn btn-gold">${ctaText}</a>
     </div>
   `;
 }
