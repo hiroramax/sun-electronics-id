@@ -786,7 +786,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 
 <script>
 // ==================== LANGUAGE TOGGLE ====================
-let currentLang = 'en';
+let currentLang = 'id';
 function toggleLang() {
   currentLang = currentLang === 'en' ? 'id' : 'en';
   document.querySelectorAll('[data-en]').forEach(el => {
@@ -804,6 +804,18 @@ function toggleLang() {
 // ==================== NAVBAR SCROLL ====================
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ==================== INIT LANGUAGE ====================
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-id-lang]').forEach(el => {
+    const text = el.getAttribute('data-id-lang');
+    if (text) el.innerHTML = text;
+  });
+  document.querySelectorAll('[data-id-placeholder]').forEach(el => {
+    const ph = el.getAttribute('data-id-placeholder');
+    if (ph) el.placeholder = ph;
+  });
 });
 
 // ==================== MOBILE MENU ====================
