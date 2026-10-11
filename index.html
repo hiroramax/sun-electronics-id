@@ -429,13 +429,16 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 }
 .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.5); }
 
-/* ==================== MAP PLACEHOLDER ==================== */
-.map-placeholder {
-  width: 100%; height: 300px; border-radius: var(--radius);
-  background: var(--gray-lighter); display: flex; align-items: center; justify-content: center;
-  color: var(--gray); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
-  margin-top: 32px;
+/* ==================== GOOGLE MAPS ==================== */
+.map-embed {
+  width: 100%; height: 300px; border: 0; border-radius: var(--radius);
+  margin-top: 32px; display: block; background: var(--gray-lighter);
 }
+.map-link {
+  display: inline-block; margin-top: 12px; font-size: 0.85rem; font-weight: 500;
+  color: var(--forest); text-decoration: none;
+}
+.map-link:hover { color: var(--gold); }
 
 /* ==================== SCROLL ANIMATIONS ==================== */
 .reveal {
@@ -625,7 +628,8 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
             <p><a href="mailto:sunelectronicsindonesia@gmail.com" style="color:var(--gray);text-decoration:none;">sunelectronicsindonesia@gmail.com</a></p>
           </div>
         </div>
-        <div class="map-placeholder" data-en="Google Maps Embed" data-id-lang="Google Maps Embed">Google Maps Embed</div>
+        <iframe class="map-embed" title="Lokasi SUN Electronics - Meruyung, Limo, Depok" src="https://www.google.com/maps?q=Jalan+Tridharma+Barat%2C+RT.5%2FRW.11%2C+Meruyung%2C+Kec.+Limo%2C+Kota+Depok%2C+Jawa+Barat+16515&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Jalan+Tridharma+Barat%2C+RT.5%2FRW.11%2C+Meruyung%2C+Kec.+Limo%2C+Kota+Depok%2C+Jawa+Barat+16515" target="_blank" rel="noopener" data-en="Open in Google Maps" data-id-lang="Buka di Google Maps">Buka di Google Maps</a>
       </div>
       <div>
         <div class="contact-form">
